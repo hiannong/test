@@ -18,25 +18,25 @@
 
     <!-- 스테이지 1: 스토리 읽기 -->
     <div id="stage-1" class="stage">
-        <img src="https://i.postimg.cc/dVCGB9qw/aimovieproject-a-remote-log-cabin-deep-in-a-snow-covered-forest-03aa3f58-7400-4081-ad20-e3cbe9009af9.png" alt="스토리 이미지 1">
-        <h2>어느 오래된 공원...</h2>
-        <p>당신은 벤치 아래에서 낡은 지도를 발견했습니다. 지도가 가리키는 곳으로 가려면 다음으로 넘어가세요.</p>
+        <img src="gogo.png" alt="스토리 이미지 1">
+        <h2>어느 조용한 방안...</h2>
+        <p>당신은 책상 아래에서 낡은 지도를 발견했습니다. 지도가 가리키는 곳으로 가려면 다음으로 넘어가세요.</p>
         <button onclick="nextStage(2)">다음으로</button>
     </div>
 
     <!-- 스테이지 2: 퀴즈 입력 -->
     <div id="stage-2" class="stage hidden">
-        <img src="https://i.postimg.cc/dVCGB9qw/aimovieproject-a-remote-log-cabin-deep-in-a-snow-covered-forest-03aa3f58-7400-4081-ad20-e3cbe9009af9.png" alt="퀴즈 이미지 1">
-        <h2>첫 번째 시련</h2>
-        <p>나무 밑동에 새겨진 글자는 무엇인가요? (정답: 사과)</p>
+        <img src="gogo.png" alt="퀴즈 이미지 1">
+        <h2>첫 번째 퀴즈</h2>
+        <p>피는 무슨 색인가요? (정답: 빨강)</p>
         <input type="text" id="answer-2" placeholder="정답을 입력하세요">
         <button onclick="checkAnswer(2, '사과', 3)">확인</button>
     </div>
 
     <!-- 스테이지 3: 엔딩 -->
     <div id="stage-3" class="stage hidden">
-        <h2>탈출 성공!</h2>
-        <p>축하합니다. 보물을 찾았습니다!</p>
+        <h2>생존 성공!</h2>
+        <p>축하합니다. 삶을 찾았습니다!</p>
     </div>
 
     <script>
