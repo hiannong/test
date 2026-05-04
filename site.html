@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>너가 잠든 사이</title>
+    <style>
+        body { font-family: 'sans-serif'; text-align: center; background: #f0f0f0; padding: 20px; }
+        .stage { background: white; padding: 20px; border-radius: 15px; max-width: 500px; margin: 0 auto; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .hidden { display: none; } /* 숨김 처리 핵심 */
+        img { max-width: 100%; border-radius: 10px; margin-bottom: 15px; }
+        input { padding: 10px; width: 80%; margin: 10px 0; border: 1px solid #ddd; border-radius: 5px; }
+        button { padding: 10px 20px; background: #333; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background: #555; }
+    </style>
+</head>
+<body>
+
+    <!-- 스테이지 1: 스토리 읽기 -->
+    <div id="stage-1" class="stage">
+        <img src="yoyo.png" alt="스토리 이미지 1">
+        <h2>어느 조용한 방안...</h2>
+        <p>당신은 책상 아래에서 낡은 일기를 발견했습니다. 일기를 주우려면 다음으로 넘어가세요.</p>
+        <div class="button-group">
+        <button onclick="nextStage(2)">다음으로</button>
+        </div>
+    </div>
+
+    <!-- 스테이지 2: 퀴즈 입력 -->
+    <div id="stage-2" class="stage hidden">
+        <img src="yoyo.png" alt="퀴즈 이미지 1">
+        <h2>생존 1</h2>
+        <p>피는 무슨 색인가요?</p>
+        <input type="text" id="answer-2" placeholder="정답을 입력하세요">
+        <div class="button-group">
+        <button class="prev-btn" onclick="nextStage(1)">← 이전으로</button>
+        <button onclick="checkAnswer(2, '사과', 3)">확인</button>
+        </div>
+    </div>
+
+    <!-- 스테이지 3: 엔딩 -->
+    <div id="stage-3" class="stage hidden">
+        <h2>탈출 성공!</h2>
+        <p>축하합니다. 보물을 찾았습니다!</p>
+    </div>
+
+    <script>
+        // 다음 단계로 단순히 이동하는 함수
+        function nextStage(stageNum) {
+            // 모든 스테이지 숨기기
+            document.querySelectorAll('.stage').forEach(stage => stage.classList.add('hidden'));
+            // 타겟 스테이지 보여주기
+            document.getElementById('stage-' + stageNum).classList.remove('hidden');
+        }
+
+        // 정답을 체크하고 이동하는 함수
+        function checkAnswer(currentNum, correctAnswer, nextNum) {
+            const input = document.getElementById('answer-' + currentNum).value.trim();
+            if (input === correctAnswer) {
+                alert("정답입니다!");
+                nextStage(nextNum);
+            } else {
+                alert("다시 생각해보세요. 힌트: 2글자");
+            }
+        }
+    </script>
+</body>
+</html>
