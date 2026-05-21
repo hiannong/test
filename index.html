@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>비밀의 정원: 5개의 숨겨진 기록</title>
+    <title>여름의 인연</title>
     
     <!-- 구글 폰트 적용 (미스터리하고 감성적인 서체) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -118,6 +118,7 @@
             font-size: 16px;
             font-family: 'Gowun Batang', serif;
             font-weight: 700;
+            white-space: pre-line; /* 줄바꿈 허용 */
         }
 
         /* 타이틀 스타일 */
@@ -224,7 +225,7 @@
 
         /* 입력창 디자인 */
         .input-group {
-            margin: 20px 0;
+            margin: 15px 0;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -286,6 +287,29 @@
 
         .btn-secondary:active { background-color: #2b3744; }
 
+        /* 💡 힌트 버튼 스타일 */
+        .btn-hint {
+            background-color: transparent;
+            border: 1px dashed #dcb386;
+            color: #dcb386;
+            padding: 10px;
+            font-size: 14px;
+            width: 100%;
+            max-width: 200px;
+            margin: 5px auto;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-hint:active {
+            background-color: rgba(220, 179, 134, 0.1);
+        }
+
         /* 진행률 표시기 */
         .progress-bar {
             text-align: center;
@@ -298,7 +322,7 @@
 <body>
 
     <!-- 🎵 로프형 비밀의 정원 테마와 어울리는 자연 앰비언스 엠피쓰리 (Audio Element) -->
-    <audio id="bgm" src="Quiet Pressure (1).mp3" loop></audio>
+    <audio id="bgm" src="22.mp3" loop></audio>
 
     <div class="game-container">
         
@@ -318,10 +342,10 @@
         <!-- [0] 인트로 화면 (최초 시작) -->
         <div id="screen-intro" class="screen">
             <div>
-                <h1>비밀의 정원</h1>
-                <p>의문의 편지를 받고 도착한 낡은 정원. 이곳의 굳게 닫힌 문을 열기 위해서는 주변에 흩어진 5개의 비밀 표식을 찾아내 봉인을 해제해야만 합니다.</p>
+                <h1>여름의 인연</h1>
+                <p>지친 일상으로부터 잠시 나온 당신. 강원도의 어느 게스트 하우스로 휴가를 왔다.</p>
                 <div class="image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1516259762381-22954d7d3ad2?q=80&w=600" alt="정원 미스터리 단서">
+                    <img src="버스정류장.png" alt="첫인상">
                 </div>
             </div>
             <!-- 클릭 시 음악 재생을 트리거하며 prologue 화면으로 진입 -->
@@ -333,9 +357,9 @@
             <div>
                 <h2>정원의 문턱에서</h2>
                 <div class="image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=600" alt="정원 진입">
+                    <img src="입장.png" alt="어색한 시작">
                 </div>
-                <p>정원 문턱을 넘어서자마자 차가운 바람이 목덜미를 스칩니다. 굳게 잠긴 문을 열기 위해서는 지도에 표시된 의심스러운 구역들을 모두 탐색해야만 합니다. 마음의 준비를 마치고 지도를 펼칩니다.</p>
+                <p>게스트 하우스 문턱을 넘어서자마자 더운 바람이 목덜미를 스칩니다. 숙소를 찾기 위해서는 비밀번호가 필요합니다. 5장소에서 비밀번호에 대한 힌트를 모아보세요.</p>
             </div>
             <button class="btn btn-primary" onclick="goToScreen('hub')">지도로 이동하기 <i class="fa-solid fa-map"></i></button>
         </div>
@@ -344,26 +368,27 @@
         <div id="screen-hub" class="screen hidden">
             <div>
                 <h2>미션 허브</h2>
-                <p>단서가 흩어져 있을 만한 의심스러운 장소 5곳입니다. 발자국을 따라 장소를 조사하세요.</p>
+                <p>힌트가 있는 장소입니다. 선택하여 힌트를 모으세요.</p>
                 <div class="hub-list">
                     <button id="btn-1" class="choice-btn" onclick="goToStory(1)">
                         <span>1. 낡은 나무 벤치</span> <i class="fa-solid fa-chevron-right"></i>
                     </button>
                     <button id="btn-2" class="choice-btn" onclick="goToStory(2)">
-                        <span>2. 이끼 낀 분수대</span> <i class="fa-solid fa-chevron-right"></i>
+                        <span>2. 이끼 낀 연못</span> <i class="fa-solid fa-chevron-right"></i>
                     </button>
                     <button id="btn-3" class="choice-btn" onclick="goToStory(3)">
-                        <span>3. 조각상 기둥 뒤</span> <i class="fa-solid fa-chevron-right"></i>
+                        <span>3. 장식장 기둥 뒤</span> <i class="fa-solid fa-chevron-right"></i>
                     </button>
                     <button id="btn-4" class="choice-btn" onclick="goToStory(4)">
-                        <span>4. 마른 우물 안쪽</span> <i class="fa-solid fa-chevron-right"></i>
+                        <span>4. 우물 안쪽</span> <i class="fa-solid fa-chevron-right"></i>
                     </button>
                     <button id="btn-5" class="choice-btn" onclick="goToStory(5)">
-                        <span>5. 철문 옆 석판</span> <i class="fa-solid fa-chevron-right"></i>
+                        <span>5. 나무문 위 간판</span> <i class="fa-solid fa-chevron-right"></i>
                     </button>
                 </div>
             </div>
-            <div class="progress-bar">현재 봉인 해제 진행률: <span id="solved-count">0</span> / 5</div>
+            <button type="button" class="btn btn-primary" onclick="goToScreen('prologue')"><i class="fa-solid fa-arrow-left"></i> 뒤로가기</button>
+            <div class="progress-bar">현재 비밀번호 수집률: <span id="solved-count">0</span> / 5</div>
         </div>
 
         <!-- [2] 스토리 설명 화면 -->
@@ -386,6 +411,12 @@
             <div>
                 <h2 id="quiz-title">장소 수수께끼</h2>
                 <p id="quiz-question">퀴즈 질문이 들어갑니다.</p>
+                
+                <!-- 💡 힌트 버튼 추가 -->
+                <button type="button" class="btn-hint" onclick="showHint()">
+                    <i class="fa-regular fa-lightbulb"></i> 힌트 보기
+                </button>
+
                 <div class="input-group">
                     <input type="text" id="answer-input" placeholder="정답을 입력하세요" autocomplete="off">
                 </div>
@@ -396,58 +427,97 @@
             </div>
         </form>
 
+        <!-- [3.5] 최종 문 앞에서의 스토리 설명 화면 (추가된 기능) -->
+        <div id="screen-final-story" class="screen hidden">
+            <div>
+                <h2>방문 앞</h2>
+                <div class="image-wrapper">
+                    <img src="자물쇠.png" alt="숙소 문">
+                </div>
+                <p>5개의 비밀번호를 모두 모았습니다! 당신은 수집한 비밀번호로 방문을 열려고 합니다. 하지만 거기에 있는 것은 2개의 자물쇠. 하나를 더 풀어야만 합니다.</p>
+            </div>
+            <div class="button-group">
+                <button class="btn btn-primary" onclick="goToScreen('final-quiz')">암호 풀러가기 <i class="fa-solid fa-unlock"></i></button>
+            </div>
+        </div>
+
+        <!-- [3.8] 최종 자물쇠 퀴즈 화면 (추가된 기능) -->
+        <form id="screen-final-quiz" class="screen hidden" onsubmit="event.preventDefault(); checkFinalAnswer();">
+            <div>
+                <h2>마지막 비밀번호</h2>
+                <p id="final-quiz-question">열심히 봉사하는 우리들. 화이팅!!<br>814 = black<br>815 = red<br>816 = ?</p>
+                
+                <!-- 💡 최종 퀴즈 전용 힌트 버튼 -->
+                <button type="button" class="btn-hint" onclick="showFinalHint()">
+                    <i class="fa-regular fa-lightbulb"></i> 최종 힌트 보기
+                </button>
+
+                <div class="input-group">
+                    <input type="text" id="final-answer-input" placeholder="마스터 암호를 입력하세요" autocomplete="off">
+                </div>
+            </div>
+            <div class="button-group">
+                <button type="button" class="btn btn-secondary" onclick="goToScreen('final-story')"><i class="fa-solid fa-arrow-left"></i> 뒤로가기</button>
+                <button type="submit" class="btn btn-primary">자물쇠 풀기</button>
+            </div>
+        </form>
+
         <!-- [4] 최종 탈출 화면 -->
         <div id="screen-ending" class="screen hidden">
             <div>
-                <h2>🎉 모든 봉인 해제 완료!</h2>
+                <h2>비밀번호를 모아 방에 들어가게 되었습니다.</h2>
                 <div class="image-wrapper">
-                    <img src="모닥불.png" alt="정원 탈출 성공">
+                    <img src="숙소.png" alt="숙소 입장 성공">
                 </div>
-                <p>쿠구구궁... 정원 깊숙한 곳에서 무거운 돌문이 열리는 소리가 들립니다. 당신은 드디어 이곳의 거대한 비밀을 밝혀내고 탈출에 성공했습니다!</p>
+                <p>끼이익... 문이 열리면서 작은 소리가 납니다. 진정한 휴가의 시작입니다.</p>
             </div>
-            <button class="btn btn-primary" onclick="location.reload()">처음부터 다시하기 <i class="fa-solid fa-rotate-right"></i></button>
         </div>
 
     </div>
 
     <!-- 게임 로직 제어 자바스크립트 -->
     <script>
-        // 1. 각 장소별 데이터 정의 (스토리, 이미지, 퀴즈 내용 및 정답)
+        // 1. 각 장소별 데이터 정의 (스토리, 이미지, 퀴즈 내용, 정답 및 전용 힌트)
         const gameData = {
             1: {
                 title: "낡은 나무 벤치",
-                storyImage: "https://images.unsplash.com/photo-1547483238-f400e65ccd56?q=80&w=600",
-                storyText: "벤치의 삐걱거리는 판자 사이로 아주 작게 적힌 문장이 보입니다.\n'모든 고통을 잊게 만드는 마법의 붉은 과일... 그것이 나의 시작이었다.'",
-                quizQuestion: "벤치 뒤편에 숨겨진 철판에 적힌 단어는 무엇일까요?\n힌트: 백설공주가 먹었던 이것 (두 글자)",
-                correctAnswer: "사과"
+                storyImage: "벤치.png",
+                storyText: "벤치의 삐걱거리는 판자 사이로 아주 작게 적힌 문장이 보입니다.\n'봉사의 모든 고통을 잊게 만드는 마법의 단어... 그것이 나의 시작이었다.'",
+                quizQuestion: "벤치 뒤편에 숨겨진 철판에 적힌 단어는 무엇일까요?",
+                correctAnswer: "신앙",
+                hint: "힌트: 복음의 시작 (두 글자)"
             },
             2: {
-                title: "이끼 낀 분수대",
-                storyImage: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?q=80&w=600",
-                storyText: "말라붙은 분수대 중앙, 거친 손길로 쪼아 만든 돌조각이 하나 쓰러져 있습니다. 그 조각상을 정면으로 돌리자 세 명의 천사가 쥐고 있는 작은 구슬들이 눈에 띕니다.",
-                quizQuestion: "이곳의 물줄기가 솟아오르던 구멍의 개수는 총 몇 개일까요? 조각상 발밑에 'III + IV' 라고 각인되어 있습니다. (숫자로 입력)",
-                correctAnswer: "7"
+                title: "이끼 낀 연못",
+                storyImage: "연못.png",
+                storyText: "오래되어 보이는 연못 중앙, 자라난 식물 사이로 작은 구멍이 보입니다.",
+                quizQuestion: "구멍에는 작은 쪽지가 있습니다. 우리의 주제는 어디있을까요?(숫자만 입력)",
+                correctAnswer: "1155",
+                hint: "성구"
             },
             3: {
-                title: "조각상 기둥 뒤",
+                title: "장식장 기둥 뒤",
                 storyImage: "https://images.unsplash.com/photo-1605721911519-3dfeb3be25e7?q=80&w=600",
-                storyText: "거대한 대리석 조각상 뒤편, 굳게 봉인된 석판 하나가 틈새에 박혀 있습니다. 석판을 꺼내자 흙먼지 속에서 은은한 기하학 문양이 빛납니다.",
-                quizQuestion: "조각상이 가리키는 손가락 끝은 항상 '이곳'을 향합니다. 밤하늘에서 길을 잃은 나그네들의 길잡이가 되어주는 이 별의 이름은 무엇일까요?",
-                correctAnswer: "북극성"
+                storyText: "장식장 뒤편, 그림 하나가 그려져 있습니다. 자세히 보자 익숙한 모습이 보입니다.",
+                quizQuestion: "운영위원장님의 성함은?(이름만)",
+                correctAnswer: "권태휘",
+                hint: "모르면....."
             },
             4: {
-                title: "마른 우물 안쪽",
-                storyImage: "https://images.unsplash.com/photo-1590073844006-33379778ae09?q=80&w=600",
-                storyText: "깊고 어두운 우물 안쪽을 들여다봅니다. 밧줄을 타고 조심스럽게 내려가자 벽돌 사이에 박혀있는 낡은 황동 열쇠가 손끝에 느껴집니다.",
-                quizQuestion: "우물 벽면에 새겨진 고대 로마자 'IX'는 10진수로 어떤 숫자를 의미할까요? (숫자로 입력)",
-                correctAnswer: "9"
+                title: "우물 안쪽",
+                storyImage: "우물.png",
+                storyText: "깊고 어두운 우물 안쪽을 들여다봅니다. 맑은 물 사이로 우물 바닥에 무언가가 보입니다.",
+                quizQuestion: "제작자의 생일은? (숫자 입력)",
+                correctAnswer: "0508",
+                hint: "궁금하면 물어보세요."
             },
             5: {
-                title: "철문 옆 석판",
-                storyImage: "https://images.unsplash.com/photo-1508193638397-1c4234db14d8?q=80&w=600",
-                storyText: "굳게 닫힌 거대한 철문. 그 바로 옆에 위치한 오래된 석판에는 마지막 열쇠를 꽂는 정교한 홈이 파여 있습니다.",
-                quizQuestion: "정원의 탈출구를 열기 위한 암구호는 '시작할 때 열고 끝날 때 닫히는 단 하나의 기관' 입니다. 우리의 몸에서 호흡을 들이마시고 내뱉는 이 기관의 이름은 무엇일까요?",
-                correctAnswer: "폐"
+                title: "나무문 위 간판",
+                storyImage: "간판.png",
+                storyText: "처음 들어오면서 지난 나무문. 그 위에는 작은 간판이 달려있습니다.",
+                quizQuestion: "123456789, 24376=?",
+                correctAnswer: "꽃게 하트",
+                hint: "간판을 자세히 보고 세보세요."
             }
         };
 
@@ -561,6 +631,16 @@
             goToScreen('story');
         }
 
+        // 💡 힌트 보기 알림 함수
+        function showHint() {
+            const data = gameData[currentActiveStage];
+            if (data && data.hint) {
+                showAlert(`💡 [힌트]\n\n${data.hint}`);
+            } else {
+                showAlert("💡 이 수수께끼에는 등록된 힌트가 없습니다.");
+            }
+        }
+
         // 정답 제출 및 채점 프로세스
         function checkAnswer() {
             const userInput = document.getElementById('answer-input').value.trim();
@@ -582,7 +662,7 @@
 
                     // 4. 모든 미션 완료 시 엔딩, 아니면 허브로 복귀
                     if (solvedStages.size === totalStages) {
-                        goToScreen('ending');
+                        goToScreen('final-story');
                     } else {
                         goToScreen('hub');
                     }
@@ -590,6 +670,25 @@
             } else {
                 showAlert("❌ 봉인이 해제되지 않았습니다. 단서를 다시 확인해 보세요!");
             }
+        }
+
+        // 🔑 최종 마스터 암호 채점 함수 (추가된 기능)
+        function checkFinalAnswer() {
+            const userInput = document.getElementById('final-answer-input').value.trim();
+            const correct = "red"; // 핵심 가치이자 본 게임의 타이틀
+
+            if (userInput === correct) {
+                showAlert("🔓 덜컹! 자물쇠가 풀렸습니다. 방 문이 서서히 열립니다.", () => {
+                    goToScreen('ending');
+                });
+            } else {
+                showAlert("❌ 자물쇠가 꼼짝도 하지 않습니다.");
+            }
+        }
+
+        // 💡 최종 퀴즈 힌트 보기 알림 함수 (추가된 기능)
+        function showFinalHint() {
+            showAlert("date");
         }
     </script>
 </body>
